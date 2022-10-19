@@ -7,9 +7,17 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: Home
-    }
+      component: Home,
+      meta: {
+        title: "Ip Address Tracker",
+      },
+    },
   ]
 })
 
-export default router
+router.beforeEach((to, from, next) => {
+  document.title = `${to.meta.title}`;
+  next();
+})
+
+export default router;
